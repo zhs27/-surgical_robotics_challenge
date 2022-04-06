@@ -1,1 +1,1 @@
-# -surgical_robotics_challenge
+# surgical_robotics_challenge
