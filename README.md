@@ -1,6 +1,6 @@
 # surgical_robotics_challenge
 
-Project for CS 3891: Algorithms of Robotics. Goal is to implement the Da Vinci robot to perform needle work on ‚Äúpatient‚Äù.
+Project for CS 3891: Algorithms of Robotics. Goal is to implement the Da Vinci robot to perform needle work on 'patient'.
 
 ## Task Breakdown
 
@@ -14,7 +14,7 @@ rostopic echo /ambf/env/Needle/State
 
 ## Code Structure
 
-ambf should be at ~. So is surgical_robotics_challenge (https://github.com/zhs27/surgical_robotics_challenge.git). 
+ambf should be at ~. So is surgical_robotics_challenge (https://github.com/collaborative-robotics/surgical_robotics_challenge.git)
 
 ## How to Run
 
