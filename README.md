@@ -9,3 +9,5 @@ We break the task down into three parts:
 2) Planning a trajectory: write a Action class with start point, end point, and type of movement (whether the push the needle through and in what direction); give a sequence of Actions
 3) Carrying out movement: implement robot movement to actually push the needle through and move arm
  
+## Find Needle Command
+rostopic echo /ambf/env/Needle/State
