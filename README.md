@@ -41,7 +41,8 @@ p: 0.00000
 y: 0.630491
 gripper: 0.5
 
-#Control interface
+## Control interface
 Figured out how to control with crkt 
 But each time the robot moves differently with same coordinates.
-Will try to interpolate more values tomorrow
+Seems initial coordinate is randomized
+
