@@ -45,4 +45,6 @@ gripper: 0.5
 Figured out how to control with crkt 
 But each time the robot moves differently with same coordinates.
 Seems initial coordinate is randomized
+PSM initial randomized banned.
+
 
