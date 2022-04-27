@@ -114,15 +114,21 @@ class ECMController:
             self.update_camera_pose()
 
 
-def interpolate(x1,y1,z1, x2, y2, z2, r, p, y, gr, n, controller):
+def interpolate(x1,y1,z1, x2, y2, z2, r1, p1, yaw1, r2, p2, yaw2, gr, n, controller):
 	deltax = (x2 - x1) / n
 	deltay = (y2 - y1) / n
 	deltaz = (z2 - z1) / n
+        deltar = (r2 - r1) / n
+	deltap = (p2 - p1) / n
+	deltayaw = (yaw2 - yaw1) / n
 	for i in range(n):
 		x1 += deltax
 		y1 += deltay
 		z1 += deltaz
-		controller.run(x1, y1, z1, r, p, y, gr)
+		r1 += deltar
+		p1 += deltap
+		yaw1 += deltayaw
+		controller.run(x1, y1, z1, r1, p1, yaw1, gr)
 		
 		
 		
@@ -193,8 +199,16 @@ if __name__ == "__main__":
     #controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
     #controller.run(x, y, z, 1.841493, 0, 0.630491, 0.0)
     time.sleep(5)
-    interpolate(x, y, z, -0.279851, -0.604478, -1.347015, 1.841493, 0, 0.630491, 0.0, 1000, controller)
-		
+    interpolate(x, y, z, -0.458955, 0.134328, -1.27951, 1.841493, 0, 0.630491, 2.513134, -0.268657, 1.839447, 0.0, 1000, controller)
+    x = -0.458955
+    y = 0.134328
+    z = -1.27951
+    r = 2.513134
+    p = -0.268657
+    yaw = 1.839447
+    time.sleep(5)
+    controller.run(-0.503731, 0.111940, -1.279851, r, p, yaw, 0.0)
+    #interpolate(x, y, z, -0.503731, 0.07358, -1.279851, r, p, yaw, 2.513134, -0.626866, 1.212581, 0.0, 1000, controller)	
     #controller.run(-0.279851, -0.604478, -1.347015, 1.841493, 0, 0.630491, 0.0)
     
     time.sleep(1000)
