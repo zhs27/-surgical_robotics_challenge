@@ -251,14 +251,32 @@ if __name__ == "__main__":
     x1 = -0.503731
     y1 = -0.044776
     z1 = -1.190299
-    interpolate(-0.515, 0.37, -1.35, x1, y1, z1, -1.35, 2.513134, -0.268657, -1.35, 2.513134, -0.268657, 0.5, 1000, controller)
-    x = -0.570896
-    y = -0.033582
-    z = -1.447761
+    interpolate(-0.515, 0.17, -1.35, x1, y1, z1, 2.513134, -0.268657, 1.0, 2.513134, -0.268657, 1.0, 0.5, 1000, controller)
+    x = -0.540896
+    y = -0.011194
+    z = -1.436567
     r = 3.319104
     p = -0.223881
     yaw = 0.496163
-    interpolate(x1, y1, z1, x, y, z, -1.35, 2.513134, -0.268657, r, p, yaw, 0.5, 1000, controller)
+    controller.run(x1, y1, z1, r,p, yaw, 0.5)
+
+    interpolate(x1, y1, z1, x, y, z, r, p, yaw, r, p, yaw, 0.5, 1000, controller)
+    controller.run(x, y, z, r,p, yaw, 0.0)
+    controller1.run(0.55896, 0.073970, -1.238209, 3.14 , 0, 1.570790, 0.5)
+    interpolate(0.55896, 0.073970, -1.238209, 0, 0, -1, 3.14 , 0, 1.570790, 3.14 , 0, 1.570790, 0.5, 100, controller1)
+    x1 = -0.694030
+    y1 = y
+    z1 = z
+    interpolate(x, y, z, x1, y1, z1, r, p, yaw, r, p, yaw, 0.0, 1000, controller)
+    x = -0.895522
+    y = 0.167910
+    z = -1.347015
+    interpolate(x1, y1, z1, x, y, z, r, p, yaw, r, p, yaw, 0, 1000, controller)
+    
+    x1 = -0.447761
+    y1 = 0.268657
+    z1 = -1.503731
+    interpolate(x, y, z, x1, y1, z1, r, p, yaw, 2.513134, -0.268657, 1.884223, 0.0, 1000, controller) 
     
     
     
