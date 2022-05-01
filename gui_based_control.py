@@ -114,6 +114,24 @@ class ECMController:
             self.update_camera_pose()
 
 
+def interpolate(x1,y1,z1, x2, y2, z2, r1, p1, yaw1, r2, p2, yaw2, gr, n, controller):
+	deltax = (x2 - x1) / n
+	deltay = (y2 - y1) / n
+	deltaz = (z2 - z1) / n
+        deltar = (r2 - r1) / n
+	deltap = (p2 - p1) / n
+	deltayaw = (yaw2 - yaw1) / n
+	for i in range(n):
+		x1 += deltax
+		y1 += deltay
+		z1 += deltaz
+		r1 += deltar
+		p1 += deltap
+		yaw1 += deltayaw
+		controller.run(x1, y1, z1, r1, p1, yaw1, gr)
+		
+		
+		
 
 
 if __name__ == "__main__":
@@ -127,6 +145,7 @@ if __name__ == "__main__":
     parsed_args = parser.parse_args()
     print('Specified Arguments')
     print(parsed_args)
+    
 
     parsed_args.run_psm_one = get_boolean_from_opt(parsed_args.run_psm_one)
     parsed_args.run_psm_two = get_boolean_from_opt(parsed_args.run_psm_two)
@@ -135,11 +154,24 @@ if __name__ == "__main__":
 
     c = Client(parsed_args.client_name)
     c.connect()
+    
+    #c1 = Client(parsed_args.client_name)
+    #c1.connect()
 
     time.sleep(0.5)
     controllers = []
     psm = PSM(c, 'psm2')
+    psm1 = PSM(c, 'psm1')
+    controller1 = PSMController(psm1)
     controller = PSMController(psm)
+    
+    x = 0.593284
+    y = 0.078358
+    z = -1.156716
+    r = 3.14
+    p = 0
+    yaw = 1.570790
+    interpolate(0, 0, -1, x, 0.078358, z, r, p, yaw, r, p, yaw, 0.0, 1000, controller1)
 
     x = 0.0
     for i in range(1000):
@@ -149,7 +181,7 @@ if __name__ == "__main__":
     y = 0.0
     for i in range(1000):
         y += 0.1 / 1000
-        controller.run(x, 0.0, -1.0, 1.841493, 0, 0.630491, 0.5)
+        controller.run(x, y, -1.0, 1.841493, 0, 0.630491, 0.5)
         
     z = -1.0
     for i in range(1000):
@@ -164,19 +196,68 @@ if __name__ == "__main__":
         x += 0.05 / 1000
         controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
     
-    y = -0.18
-    controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
-    x = -0.26
-    controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
-    x = -0.23
-    controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
-    x = -0.21
-    controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
-    controller.run(x, y, z, 1.841493, 0, 0.630491, 0.05)
+    deltay = (-0.18 - y) / 1000
+    for i in range(1000):
+        y += deltay
+        controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
+    deltax = (-0.21 - x) / 1000
+    for i in range(1000):
+        x += deltax
+        controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)		
+    #x = -0.26
+    #controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
+    #x = -0.23
+    #controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
+    #x = -0.21
+    #controller.run(x, y, z, 1.841493, 0, 0.630491, 0.5)
+    #controller.run(x, y, z, 1.841493, 0, 0.630491, 0.0)
     time.sleep(5)
-    controller.run(-0.35, -0.5, -1.8, 1.841493, 0, 0.630491, 0.05)
+    interpolate(x, y, z, -0.515, 0.17, -1.325, 1.841493, 0, 0.630491, 2.513134, -0.268657, 1.884223, 0.0, 1000, controller)
+    x = -0.515
+    y = 0.17
+    z = -1.325
+    r = 2.513134
+    p = -0.268657
+    yaw = 1.884223
+    time.sleep(1)
+    interpolate(x, y, z, -0.515, 0.17, -1.35, 1.841493, 0, 0.630491, 2.513134, -0.268657, 1.0, 0.0, 1000, controller)
+    
+    x = 0.593284
+    y = 0.078358
+    z = -1.156716
+    r = 3.14
+    p = 0
+    yaw = 1.570790   
+    x1 = 0.526119
+    y1 = 0.055970
+    z1 = -1.1369403
+    r = 3.14
+    p = 0
+    yaw = 1.570790
 
-    time.sleep(100)
+    interpolate(x,y,z, x1, y1, z1, r, p, yaw, r, p, yaw, 0.0, 1000, controller1)
+    x = 0.570896
+    y = 0.055970
+    z = -1.358209
+    interpolate(x1,y1,z1, x, y, z, r, p, yaw, r, p, yaw, 0.5, 1000, controller1)
+
+    
+    
+    
+    
+    time.sleep(1000)
+    
+    #x = 0.593284
+    #y = 0.078358
+    #z = -1.156716
+    #r = 3.14
+    #p = 0
+    #yaw = 1.570790
+    #interpolate(0, 0, -1, x, -1.156716, z, r, p, yaw, r, p, yaw, 1000, controller1)
+    #time.sleep(1000)
+    
+
+
 '''
     if parsed_args.run_psm_one is True:
         arm_name = 'psm1'
