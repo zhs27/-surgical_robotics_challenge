@@ -241,14 +241,14 @@ if __name__ == "__main__":
     z = -1.38895
     interpolate(x1,y1,z1, x, y, z, r, p, yaw, r, p, yaw, 0.5, 1000, controller1)
     controller1.run(x, y, z, r, p, yaw, 0.0)
-    time.sleep(1)
+    time.sleep(2)
     controller.run(-0.515, 0.17, -1.35, 2.513134, -0.268657, 1.0, 0.5)
     
     x1 = 0.12
     y1 = 0.053970
     z1 = -1.378209
     interpolate(x,y,z, x1, y1, z1, r, p, yaw, r, p, 1.99, 0.0, 1000, controller1)
-    time.sleep(1)
+    time.sleep(2)
     x1 = -0.503731
     y1 = -0.044776
     z1 = -1.190299
@@ -284,25 +284,37 @@ if __name__ == "__main__":
     y = 0.149
     z = -1.5755
     time.sleep(1)
-    interpolate(-0.5, y1, z1, x, y, z, r, p, yaw, 2.513134, -0.268657, 1.884223, 0.0, 1000, controller) 
+    interpolate(-0.5, y1, z1, x, y, z, r, p, yaw, 2.513134, -0.268657, 1.884223, 0.0, 1000, controller)
     
     
-    #x1 = x - 0.05
-    #y1 = y - 0.025
-    #z1 = z - 0.01
-    #interpolate(x, y, z, x1, y1, z1, 2.513134, -0.268657, 1.884223, 2.513134, -0.268657, 1., 0.0, 1000, controller) 
+    x = 0.537313
+    y = 0.223881
+    z = -1.537313
+    
+    interpolate(0, 0, -1, x, y, z, 3.14 , 0, 1.570790, 3.14 , 0, 1.570790, 0.5, 1000, controller1)
+    
+    x1 = 0.537313
+    y1 = 0.213881
+    z1 = -1.560896
+    interpolate(x, y, z, x1, y1, z1, 3.14 , 0, 1.570790, 3.14 , 0, 1.270790, 0.5, 1000, controller1)
+    time.sleep(5)
+    controller1.run(x1, y1, z1,3.14 , 0, 1.970790,0.0)
+    time.sleep(5)
+    controller.run(-0.4515, 0.149, -1.5755, 2.513134, -0.268657, 1.884223, 0.5)
+    interpolate(-0.4515, 0.149, -1.5755, -0.4515, 0.149, -1.37, 2.513134, -0.268657, 1.884223, 2.513134, -0.268657, 1.884223, 0.5, 1000, controller)
+    
+    x = 0.407313
+    y = 0.233881
+    z = -1.350896
+
+    interpolate(x1, y1, z1, x, y, z, 3.14 , 0, 1.570790, 3.14 , 0, 1.570790, 0.0, 1000, controller1)
+
+
+
 
     
     time.sleep(1000)
     
-    #x = 0.593284
-    #y = 0.078358
-    #z = -1.156716
-    #r = 3.14
-    #p = 0
-    #yaw = 1.570790
-    #interpolate(0, 0, -1, x, -1.156716, z, r, p, yaw, r, p, yaw, 1000, controller1)
-    #time.sleep(1000)
     
 
 
