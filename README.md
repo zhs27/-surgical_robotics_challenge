@@ -24,27 +24,12 @@ ambf should be at ~. So is surgical_robotics_challenge (https://github.com/colla
 ## Run gui based controller
 run gui_based_control.py inside scripts 
 
-## Pick up needles
-x: -0.268657
-y: -0.100746
-z: -1.167910
-r: 1.841493
-p: 0
-y: 0.630491
-gripper: 0.5
 
-x: -0.111940
-y: -0.190299
-z: -1.167910
-r: 1.841493
-p: 0.00000
-y: 0.630491
-gripper: 0.5
 
-## Control interface
-Figured out how to control with crkt 
-But each time the robot moves differently with same coordinates.
-Seems initial coordinate is randomized
-PSM initial randomized banned.
+## Way to run the code
+Way to run the code: copy main.py into ambf/surgical_robotics_challenge/scripts/surgical_robotics_challenge/examples
+start roscore simulation
+enter 'python main.py'
+
 
 
